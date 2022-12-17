@@ -2,6 +2,7 @@ package com.example.lab2.controllers;
 
 import com.example.lab2.entities.Student;
 import com.example.lab2.repositories.StudentRepository;
+import com.example.lab2.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/student")
 public class StudentController {
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
     @GetMapping("/findStudent")
     private String studentMainPage() {
@@ -20,7 +21,7 @@ public class StudentController {
     }
     @GetMapping("/info")
     String studentInfo(int id, Model model) {
-        Student student = studentRepository.retrieve(id);
+        Student student = studentService.getStudent(id);
         model.addAttribute("id", student.getId());
         model.addAttribute("name", student.getName());
         return "student/info";

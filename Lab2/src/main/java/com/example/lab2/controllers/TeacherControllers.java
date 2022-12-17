@@ -1,8 +1,12 @@
 package com.example.lab2.controllers;
 
+import com.example.lab2.entities.Activity;
 import com.example.lab2.entities.Lesson;
+import com.example.lab2.repositories.ActivityRepository;
 import com.example.lab2.repositories.LessonRepository;
 import com.example.lab2.entities.Student;
+import com.example.lab2.services.ActivityService;
+import com.example.lab2.services.LessonService;
 import com.example.lab2.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +17,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/teacher")
 public class TeacherControllers {
     @Autowired
-    LessonRepository lessonRepository;
+    private StudentService studentService;
 
     @Autowired
-    StudentService studentService;
+    private LessonService lessonService;
+
+    @Autowired
+    private ActivityService activityService;
 
     @GetMapping("/createStudent")
     String studentForm(Model model) {
@@ -25,22 +32,34 @@ public class TeacherControllers {
     }
 
     @PostMapping("/createStudent")
-    @ResponseBody
-    String studentCreated(@ModelAttribute Student student) {
+    String studentCreate(@ModelAttribute Student student) {
         studentService.addStudent(student);
-        return "Student Created";
+        return "student/studentForm";
     }
 
     @GetMapping("/createLesson")
     String lessonForm(Model model) {
         model.addAttribute("lesson", new Lesson());
-        return "lessonForm";
+        return "other/lessonForm";
     }
 
     @PostMapping("/createLesson")
     @ResponseBody
     String lessonCreate(@ModelAttribute Lesson lesson) {
-        lessonRepository.store(lesson);
+        lessonService.addLesson(lesson);
         return "Lesson created";
+    }
+
+    @GetMapping("/createActivity")
+    String activityForm(Model model) {
+        model.addAttribute("activity", new Activity());
+        return "other/activityForm";
+    }
+
+    @PostMapping("/createActivity")
+    @ResponseBody
+    String activityCreate(@ModelAttribute Activity activity) {
+        activityService.addActivity(activity);
+        return "Activity added";
     }
 }

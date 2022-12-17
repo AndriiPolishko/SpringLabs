@@ -2,18 +2,18 @@ package com.example.lab2.entities;
 
 public class Activity {
     private int id;
-    private Student student;
-    private Lesson lesson;
+    private int studentId;
+    private int lessonId;
     private boolean presence;
     private int grade;
 
     public Activity() {
     }
 
-    public Activity(int id, Student student, Lesson lesson, boolean presence) {
+    public Activity(int id, int studentId, int lessonId, boolean presence) {
         this.id = id;
-        this.student = student;
-        this.lesson = lesson;
+        this.studentId = studentId;
+        this.lessonId = lessonId;
         this.presence = presence;
     }
 
@@ -21,12 +21,12 @@ public class Activity {
         return id;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public Lesson getLesson() {
-        return lesson;
+    public int getLessonId() {
+        return lessonId;
     }
 
     public boolean isPresence() {
@@ -41,12 +41,12 @@ public class Activity {
         this.id = id;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public void setLesson(Lesson lesson) {
-        this.lesson = lesson;
+    public void setLesson(int lessonId) {
+        this.lessonId = lessonId;
     }
 
     public void setPresence(boolean presence) {
