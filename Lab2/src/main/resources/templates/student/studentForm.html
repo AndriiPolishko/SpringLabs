@@ -5,11 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-  <form action="studentCreated">
+  <form
+          action="#"
+          th:action="@{/teacher/createStudent}"
+          th:object="${student}"
+          method="post"
+  >
     <label for="id">Student's id</label>
-    <input name="id" id="id">
+    <input name="id" id="id" th:field="*{id}">
     <label for="name">Student's name</label>
-    <input name="name" id="name">
+    <input name="name" id="name" th:field="*{name}">
     <input type="submit" value="add student">
   </form>
 </body>

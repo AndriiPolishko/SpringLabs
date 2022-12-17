@@ -1,9 +1,9 @@
-package com.example.lab2.lesson;
+package com.example.lab2.repositories;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.lab2.repositories.ObjectRepository;
+import com.example.lab2.entities.Lesson;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -28,9 +28,9 @@ public class LessonRepository implements ObjectRepository<Lesson> {
 
     @Override
     public Lesson delete(int id) {
-        Lesson e = repository.get(id);
+        Lesson lesson = repository.get(id);
         this.repository.remove(id);
-        return e;
+        return lesson;
     }
 
 }

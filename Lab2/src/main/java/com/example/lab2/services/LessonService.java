@@ -1,5 +1,7 @@
-package com.example.lab2.lesson;
+package com.example.lab2.services;
 
+import com.example.lab2.entities.Lesson;
+import com.example.lab2.repositories.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

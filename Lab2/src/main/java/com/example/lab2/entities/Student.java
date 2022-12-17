@@ -1,13 +1,13 @@
-package com.example.lab2.student;
-
-import com.example.lab2.lesson.Lesson;
+package com.example.lab2.entities;
 
 import java.util.Map;
 
 public class Student {
     private int id;
     private String name;
-    private Map<Lesson, Integer> grades;
+    public Student() {
+
+    }
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
@@ -27,18 +27,6 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Map<Lesson, Integer> getGrades() {
-        return grades;
-    }
-
-    public void setGrade(Lesson lesson, int grade) {
-        grades.put(lesson,grade);
-    }
-
-    public int getGrade(Lesson lesson) {
-        return grades.get(lesson);
     }
 
 }

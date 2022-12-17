@@ -1,12 +1,11 @@
 package com.example.lab2.repositories;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.lab2.student.Student;
+import com.example.lab2.entities.Student;
 
 @Repository
 public class StudentRepository implements ObjectRepository<Student> {

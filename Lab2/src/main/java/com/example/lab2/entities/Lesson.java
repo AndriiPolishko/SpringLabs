@@ -1,25 +1,22 @@
-package com.example.lab2.lesson;
+package com.example.lab2.entities;
+
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
 public class Lesson {
     private int id;
     private LocalDate date;
-    public Lesson(int id, LocalDate date) {
-        this.id = id;
-        this.date = date;
-    }
 
+    public Lesson() {
+
+    }
     public Lesson(int id, String date) {
         this.id = id;
         this.date = LocalDate.parse(date);
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalDate getDate() {
+    public LocalDate getDate(){
         return date;
     }
 
@@ -27,6 +24,9 @@ public class Lesson {
         return id;
     }
 
+    public void setDate(String date) {
+        this.date = LocalDate.parse(date);
+    }
     public void setId(int id) {
         this.id = id;
     }
