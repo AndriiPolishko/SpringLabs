@@ -16,7 +16,8 @@ public class JournalController {
     @Autowired
     ActivityService activityService;
 
-    @GetMapping("/journal/show")
+    @RequestMapping("/journal")
+    @GetMapping("/show")
     String showJournal(Model model) {
         ArrayList<Activity> activities = activityService.getAllActivities();
         model.addAttribute("activities", activities);
