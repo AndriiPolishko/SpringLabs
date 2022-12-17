@@ -3,12 +3,13 @@ package com.example.lab2.repositories;
 import com.example.lab2.entities.Activity;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Repository
 public class ActivityRepository implements ObjectRepository<Activity> {
-    public HashMap<Integer, Activity> repository;
+    private HashMap<Integer, Activity> repository;
 
     public ActivityRepository() {
         this.repository = new HashMap<>();
@@ -30,5 +31,9 @@ public class ActivityRepository implements ObjectRepository<Activity> {
         Activity activity = repository.get(id);
         this.repository.remove(id);
         return activity;
+    }
+
+    public ArrayList<Activity> getAllActivities() {
+        return new ArrayList<Activity>(this.repository.values());
     }
 }

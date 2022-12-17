@@ -9,11 +9,16 @@
     <h2>Activities List</h2>
     <table class="table table-striped">
         <tr>
-            <th>Id</th>
-            <th>Name</th>
+            <th>Student Id</th>
+            <th>Lesson Id</th>
+            <th>Was student present</th>
+            <th>Student's grade</th>
         </tr>
         <tr th:each="activity : ${activities}">
-            <td th:text="${count.getId()}"></td>
+            <td th:text="${activity.getStudentId()}"></td>
+            <td th:text="${activity.getLessonId()}"></td>
+            <td th:text="${activity.isPresence()}"></td>
+            <td th:text="${activity.getGrade()}"></td>
         </tr>
     </table>
 </div>

@@ -5,10 +5,10 @@ import com.example.lab2.entities.Activity;
 import java.util.Map;
 
 public interface ObjectRepository<T> {
-    public void store(T t);
+     void store(T t);
 
-    public T retrieve(int id);
+     T retrieve(int id);
 
-    public T delete(int id);
+     T delete(int id);
 
 }

@@ -20,6 +20,7 @@ public class ActivityService {
         return activityRepository.retrieve(id);
     }
     public ArrayList<Activity> getAllActivities() {
-        return new ArrayList<Activity>(activityRepository.repository.values());
+        return activityRepository.getAllActivities();
     }
+
 }
