@@ -1,7 +1,5 @@
 package com.example.lab2.entities;
 
-import java.util.Map;
-
 public class Student {
     private int id;
     private String name;

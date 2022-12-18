@@ -2,8 +2,6 @@ package com.example.lab2.controllers;
 
 import com.example.lab2.entities.Activity;
 import com.example.lab2.entities.Lesson;
-import com.example.lab2.repositories.ActivityRepository;
-import com.example.lab2.repositories.LessonRepository;
 import com.example.lab2.entities.Student;
 import com.example.lab2.services.ActivityService;
 import com.example.lab2.services.LessonService;
@@ -26,39 +24,39 @@ public class TeacherControllers {
     private ActivityService activityService;
 
     @GetMapping("/createStudent")
-    String studentForm(Model model) {
+    public String studentForm(Model model) {
         model.addAttribute("student", new Student());
         return "student/studentForm";
     }
 
     @PostMapping("/createStudent")
-    String studentCreate(@ModelAttribute Student student) {
+    public String studentCreate(@ModelAttribute Student student) {
         studentService.addStudent(student);
         return "student/studentForm";
     }
 
     @GetMapping("/createLesson")
-    String lessonForm(Model model) {
+    public String lessonForm(Model model) {
         model.addAttribute("lesson", new Lesson());
         return "other/lessonForm";
     }
 
     @PostMapping("/createLesson")
     @ResponseBody
-    String lessonCreate(@ModelAttribute Lesson lesson) {
+    public String lessonCreate(@ModelAttribute Lesson lesson) {
         lessonService.addLesson(lesson);
         return "Lesson created";
     }
 
     @GetMapping("/createActivity")
-    String activityForm(Model model) {
+    public String activityForm(Model model) {
         model.addAttribute("activity", new Activity());
         return "other/activityForm";
     }
 
     @PostMapping("/createActivity")
     @ResponseBody
-    String activityCreate(@ModelAttribute Activity activity) {
+    public String activityCreate(@ModelAttribute Activity activity) {
         activityService.addActivity(activity);
         return "Activity added";
     }

@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
-
+@RequestMapping("/journal")
 @Controller
 public class JournalController {
     @Autowired
-    ActivityService activityService;
+    private ActivityService activityService;
 
-    @RequestMapping("/journal")
+
     @GetMapping("/show")
-    String showJournal(Model model) {
+    public String showJournal(Model model) {
         ArrayList<Activity> activities = activityService.getAllActivities();
         model.addAttribute("activities", activities);
         return "other/journal";

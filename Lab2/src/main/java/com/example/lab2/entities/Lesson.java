@@ -1,7 +1,5 @@
 package com.example.lab2.entities;
 
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDate;
 
 public class Lesson {
