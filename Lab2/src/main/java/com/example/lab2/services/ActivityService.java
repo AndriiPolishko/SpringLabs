@@ -9,8 +9,7 @@ import java.util.*;
 
 @Service
 public class ActivityService {
-    @Autowired
-    private ActivityRepository activityRepository;
+    private static final ActivityRepository activityRepository = new ActivityRepository();
 
     public void addActivity(Activity activity) {
         activityRepository.store(activity);

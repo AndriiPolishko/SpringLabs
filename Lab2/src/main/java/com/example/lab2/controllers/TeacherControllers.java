@@ -9,7 +9,10 @@ import com.example.lab2.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/teacher")
@@ -26,19 +29,20 @@ public class TeacherControllers {
     @GetMapping("/createStudent")
     public String studentForm(Model model) {
         model.addAttribute("student", new Student());
-        return "student/studentForm";
+        return "forms/studentForm";
     }
 
     @PostMapping("/createStudent")
+    @ResponseBody
     public String studentCreate(@ModelAttribute Student student) {
         studentService.addStudent(student);
-        return "student/studentForm";
+        return "forms/studentForm";
     }
 
     @GetMapping("/createLesson")
     public String lessonForm(Model model) {
         model.addAttribute("lesson", new Lesson());
-        return "other/lessonForm";
+        return "forms/lessonForm";
     }
 
     @PostMapping("/createLesson")
@@ -51,7 +55,7 @@ public class TeacherControllers {
     @GetMapping("/createActivity")
     public String activityForm(Model model) {
         model.addAttribute("activity", new Activity());
-        return "other/activityForm";
+        return "forms/activityForm";
     }
 
     @PostMapping("/createActivity")

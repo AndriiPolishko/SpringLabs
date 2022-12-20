@@ -1,5 +1,8 @@
 package com.example.lab2.entities;
 
+import org.springframework.context.annotation.Scope;
+
+@Scope("prototype")
 public class Activity {
     private int id;
     private int studentId;
@@ -45,7 +48,7 @@ public class Activity {
         this.studentId = studentId;
     }
 
-    public void setLesson(int lessonId) {
+    public void setLessonId(int lessonId) {
         this.lessonId = lessonId;
     }
 

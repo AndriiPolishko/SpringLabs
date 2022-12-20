@@ -1,30 +1,30 @@
 package com.example.lab2.entities;
 
 public class Student {
-    private int id;
+    private Long id;
     private String name;
+
     public Student() {
 
     }
-    public Student(int id, String name) {
+    public Student(Long id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

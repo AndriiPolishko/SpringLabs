@@ -10,19 +10,23 @@
           th:action="@{/teacher/createActivity}"
           th:object="${activity}"
           method="post">
+
       <label for="id">Activity id</label>
       <input type="text" id="id" name="id" th:field="*{id}">
+
       <label for="studentId">Student id</label>
       <input type="text" id="studentId" name="studentId" th:field="*{studentId}">
+
       <label for="lessonId">Lesson id</label>
-      <input type="text" id="lessonId" name="id" th:field="*{lessonId}">
+      <input type="text" id="lessonId" name="lessonId" th:field="*{lessonId}">
+
       <label for="presence">Presence</label>
       <input type="text" id="presence" name="presence" th:field="*{presence}">
+
       <label for="grade">Grade</label>
-      <input type="text" id="grade" name="id" th:field="*{grade}">
+      <input type="text" id="grade" name="grade" th:field="*{grade}">
 
       <input type="submit" value="Submit">
   </form>
-
 </body>
 </html>

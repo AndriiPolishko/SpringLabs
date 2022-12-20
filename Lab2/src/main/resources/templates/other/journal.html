@@ -17,7 +17,8 @@
         <tr th:each="activity : ${activities}">
             <td th:text="${activity.getStudentId()}"></td>
             <td th:text="${activity.getLessonId()}"></td>
-            <td th:text="${activity.isPresence()}"></td>
+            <td th:if="${activity.isPresence() == false}">Absent</td>
+            <td th:unless="${activity.isPresence() == false}">Present</td>
             <td th:text="${activity.getGrade()}"></td>
         </tr>
     </table>

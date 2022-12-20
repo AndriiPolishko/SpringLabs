@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LessonService {
-    @Autowired
-    private LessonRepository lessonRepository;
+    private static final LessonRepository lessonRepository = new LessonRepository();
 
     public void addLesson(Lesson lesson) {
         lessonRepository.store(lesson);

@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-  <p>Student with id <span th:text="${id}" /> has name <span th:text="${name}" /></p>
+    <p>Student <strong><span th:text="${name}" /></strong></p>
+    <div th:switch="${#lists.size(activities)}">
+        <div th:case="0">No grades</div>
+        <div th:case="*">
+            Student's grades:
+            <div th:if=""></div>
+            <div th:each="activity:${activities}" th:text="${activity.grade}"></div>
+        </div>
+    </div>
 </body>
 </html>

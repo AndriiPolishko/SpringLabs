@@ -3,6 +3,7 @@ package com.example.lab2.repositories;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.example.lab2.entities.Student;
@@ -10,7 +11,7 @@ import com.example.lab2.entities.Student;
 @Repository
 public class StudentRepository implements ObjectRepository<Student> {
 
-    private Map<Integer, Student> repository;
+    private static Map<Long, Student> repository;
 
     public StudentRepository() {
         this.repository = new HashMap<>();
@@ -30,7 +31,7 @@ public class StudentRepository implements ObjectRepository<Student> {
     @Override
     public Student delete(int id) {
         Student e = repository.get(id);
-        this.repository.remove(id);
+        repository.remove(id);
         return e;
     }
 
