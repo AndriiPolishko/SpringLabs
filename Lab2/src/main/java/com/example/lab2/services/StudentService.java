@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
-    @Autowired
     private StudentRepository studentRepository;
 
     public void addStudent(Student student) {
@@ -22,5 +21,10 @@ public class StudentService {
 
     public void deleteStudent(int studentId) {
         studentRepository.delete(studentId);
+    }
+
+    @Autowired
+    public void setStudentRepository(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 }

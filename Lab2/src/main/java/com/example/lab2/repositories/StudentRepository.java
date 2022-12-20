@@ -11,7 +11,7 @@ import com.example.lab2.entities.Student;
 @Repository
 public class StudentRepository implements ObjectRepository<Student> {
 
-    private static Map<Long, Student> repository;
+    private final Map<Integer, Student> repository;
 
     public StudentRepository() {
         this.repository = new HashMap<>();

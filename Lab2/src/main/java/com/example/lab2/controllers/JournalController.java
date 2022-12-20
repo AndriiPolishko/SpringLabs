@@ -13,9 +13,13 @@ import java.util.ArrayList;
 @RequestMapping("/journal")
 @Controller
 public class JournalController {
-    @Autowired
-    private ActivityService activityService;
 
+    private final ActivityService activityService;
+
+    @Autowired
+    public JournalController(ActivityService activityService) {
+        this.activityService = activityService;
+    }
 
     @GetMapping("/show")
     public String showJournal(Model model) {

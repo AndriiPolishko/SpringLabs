@@ -34,7 +34,7 @@ public class TeacherControllers {
 
     @PostMapping("/createStudent")
     @ResponseBody
-    public String studentCreate(@ModelAttribute Student student) {
+    public String studentCreate(@Valid @ModelAttribute Student student) {
         studentService.addStudent(student);
         return "forms/studentForm";
     }
@@ -47,7 +47,7 @@ public class TeacherControllers {
 
     @PostMapping("/createLesson")
     @ResponseBody
-    public String lessonCreate(@ModelAttribute Lesson lesson) {
+    public String lessonCreate(@Valid @ModelAttribute Lesson lesson) {
         lessonService.addLesson(lesson);
         return "Lesson created";
     }
@@ -60,7 +60,7 @@ public class TeacherControllers {
 
     @PostMapping("/createActivity")
     @ResponseBody
-    public String activityCreate(@ModelAttribute Activity activity) {
+    public String activityCreate(@Valid@ModelAttribute Activity activity) {
         activityService.addActivity(activity);
         return "Activity added";
     }

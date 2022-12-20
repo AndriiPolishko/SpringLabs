@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class StudentController {
     @Autowired
     private ActivityService activityService;
     @GetMapping("/{id}")
-    public String studentInfo(@PathVariable int id, Model model) {
+    public String studentInfo(@Valid @PathVariable int id, Model model) {
         Student student = studentService.getStudent(id);
         ArrayList<Activity> allActivities = activityService.getAllActivities();
         List<Activity> filteredActivities = allActivities.stream().filter(activity -> activity.getStudentId() == id).toList();

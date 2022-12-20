@@ -1,13 +1,13 @@
 package com.example.lab2.entities;
 
 public class Student {
-    private Long id;
+    private int id;
     private String name;
 
     public Student() {
 
     }
-    public Student(Long id, String name) {
+    public Student(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -20,11 +20,11 @@ public class Student {
         this.name = name;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 }

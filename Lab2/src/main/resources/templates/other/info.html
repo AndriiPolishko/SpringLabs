@@ -10,7 +10,6 @@
         <div th:case="0">No grades</div>
         <div th:case="*">
             Student's grades:
-            <div th:if=""></div>
             <div th:each="activity:${activities}" th:text="${activity.grade}"></div>
         </div>
     </div>
