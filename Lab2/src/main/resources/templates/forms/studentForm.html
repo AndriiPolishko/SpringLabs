@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form
+          action="#"
+          th:action="@{/teacher/createStudent}"
+          th:object="${student}"
+          method="post"
+  >
+    <label for="id">Student's id</label>
+    <input type="text" name="id" id="id" th:field="*{id}">
+    <label for="name">Student's name</label>
+    <input name="name" id="name" th:field="*{name}">
+    <button type="submit">Add student</button>
+  </form>
+</body>
+</html>
