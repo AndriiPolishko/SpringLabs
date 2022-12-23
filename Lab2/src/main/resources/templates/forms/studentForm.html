@@ -7,7 +7,7 @@
 <body>
   <form
           action="#"
-          th:action="@{/teacher/createStudent}"
+          th:action="@{/student/create}"
           th:object="${student}"
           method="post"
   >
@@ -15,6 +15,8 @@
     <input type="text" name="id" id="id" th:field="*{id}">
     <label for="name">Student's name</label>
     <input name="name" id="name" th:field="*{name}">
+    <label for="email">Student's email</label>
+    <input name="email" id="email" th:field="*{email}">
     <button type="submit">Add student</button>
   </form>
 </body>

@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  description: "This is a sample Lab4 server."
+  version: "1.0.0"
+  title: "Swagger lab4"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "polishkoandrii@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/api/v1"
+schemes:
+  - "http"
+paths:
+  /student/{id}:
+    get:
+      tags:
+        - "student"
+      summary: "Find student by id"
+      description: "Returns a single student"
+      operationId: "getById"
+      produces:
+        - "string"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "id of user to return"
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Student"
+    put:
+      tags:
+        - "students"
+      summary: "Update student info by id"
+      description: "Operation to update student data by id"
+      operationId: "update"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "id of student to update"
+          required: true
+          type: "integer"
+        - name: "body"
+          in: "body"
+          description: "Updated student object"
+          required: true
+          schema:
+            $ref: "#/definitions/student"
+      responses:
+        "400":
+          description: "Invalid student applied"
+        "401":
+          description: "student not found"
+        "201":
+          description: "student was successfully created"
+    delete:
+      tags:
+        - "students"
+      summary: "Delete student by id"
+      description: "Here we delete the student by id"
+      operationId: "delete"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "The id that needs to be deleted"
+          required: true
+          type: "integer"
+      responses:
+        "200":
+          description: "Deleted successfully"
+        "400":
+          description: "Invalid student applied"
+        "401":
+          description: "student not found"
+
+definitions:
+  Student:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      Name:
+        type: "string"
+      Email:
+        type: "string"
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/AndriiPolishko/Lab4/1.0.0
