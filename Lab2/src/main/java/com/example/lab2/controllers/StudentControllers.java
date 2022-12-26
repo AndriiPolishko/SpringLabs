@@ -33,7 +33,7 @@ public class StudentControllers {
 
     @PostMapping("/create")
     @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public String studentCreate(@Valid @ModelAttribute Student student) {
         studentService.addStudent(student);
         return "Student " + student.getName() + "created with email: " + student.getEmail();
@@ -50,9 +50,9 @@ public class StudentControllers {
         return "other/info";
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public String updateStudent(@PathVariable int id, HttpServletRequest request,
                                 HttpServletResponse response, Model model) {
         String reqId = request.getParameter("id");
@@ -73,7 +73,7 @@ public class StudentControllers {
         return "Student with id: " + id + " was updated";
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public String deleteStudent(@PathVariable int id) {
@@ -93,9 +93,9 @@ public class StudentControllers {
         return "other/students";
     }
 
-    @GetMapping("/email")
+    @GetMapping("/{email}")
     @ResponseBody
-    String getStudentByTheEmail(@RequestParam String email) {
+    String getStudentByTheEmail(@PathVariable String email) {
         Student student = studentService.getStudentByTheEmail(email);
         return "Student " + student.getName() + " with email: " + email + "is found";
     }
