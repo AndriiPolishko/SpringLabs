@@ -5,9 +5,6 @@ import com.example.lab2.entities.Student;
 import com.example.lab2.services.ActivityService;
 import com.example.lab2.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -84,15 +81,22 @@ public class StudentControllers {
         return "Student with id: " + id + " was deleted";
     }
 
-    @GetMapping("/{page}/{size}")
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    String getSome(@RequestParam(defaultValue = "0") int page,
-                   @RequestParam(defaultValue = "1") int size,
+    String getSome(@RequestParam int page,
+                   @RequestParam int size,
                    Model model) {
 
         List<Student> students = this.studentService.findAll(page, size);
 
         model.addAttribute("students", students);
         return "other/students";
+    }
+
+    @GetMapping("/email")
+    @ResponseBody
+    String getStudentByTheEmail(@RequestParam String email) {
+        Student student = studentService.getStudentByTheEmail(email);
+        return "Student " + student.getName() + " with email: " + email + "is found";
     }
 }

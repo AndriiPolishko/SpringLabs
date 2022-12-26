@@ -1,7 +1,6 @@
 package com.example.lab2.repositories;
 
 import com.example.lab2.entities.Activity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Map;
 

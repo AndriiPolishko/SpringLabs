@@ -21,7 +21,7 @@ public class StudentService {
         return studentRepository.retrieve(id);
     }
 
-    public Student getStudentByEmail(String email) {
+    public Student getStudentByTheEmail(String email) {
         return studentRepository.findByEmail(email);
     }
 

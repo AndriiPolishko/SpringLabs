@@ -1,14 +1,9 @@
 package com.example.lab2.repositories;
 
 import com.example.lab2.entities.Student;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class StudentRepository implements ObjectRepository<Student> {
@@ -42,7 +37,7 @@ public class StudentRepository implements ObjectRepository<Student> {
 
     public Student findByEmail(String email) {
         for (Student student: this.repository.values()) {
-            if (student.getEmail() == email) {
+            if (Objects.equals(student.getEmail(), email)) {
                 return student;
             }
         }
