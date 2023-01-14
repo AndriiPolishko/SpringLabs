@@ -4,13 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
-    Optional<T> get(long id);
-
+    void deleteById(Long id);
+    void update(T t);
     List<T> getAll();
+    Long create(T t);
 
-    void save(T t);
-
-    void update(T t, String[] params);
-
-    void delete(T t);
+    Optional<T> getById(Long id);
 }
