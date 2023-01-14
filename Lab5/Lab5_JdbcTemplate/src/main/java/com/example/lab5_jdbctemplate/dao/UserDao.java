@@ -1,5 +1,5 @@
 package com.example.lab5_jdbctemplate.dao;
-import com.example.springbootdaoproject.entity.User;
+import com.example.lab5_jdbctemplate.entity.User;
 
 import java.util.List;
 import java.util.Optional;
