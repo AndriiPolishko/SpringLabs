@@ -6,9 +6,11 @@ import com.example.lab2.services.ActivityService;
 import com.example.lab2.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,11 @@ public class StudentControllers {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String studentInfo(@Valid @PathVariable int id, Model model) {
+        return this.userService.getUserById(id)
+                .map(user -> {
+                    log.info("User with " + id + " id was found.");
+                    return ResponseEntity.ok(this.modelMapper.map(user, UserDto.class));
+                }).orElse(ResponseEntity.status(HttpStatus.CONFLICT).build());
         Student student = studentService.getStudent(id);
         ArrayList<Activity> allActivities = activityService.getAllActivities();
         List<Activity> filteredActivities = allActivities.stream().filter(activity -> activity.getStudentId() == id).toList();

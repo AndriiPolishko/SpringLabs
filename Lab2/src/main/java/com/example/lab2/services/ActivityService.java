@@ -4,22 +4,28 @@ import com.example.lab2.entities.Activity;
 import com.example.lab2.repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
+import lombok.AllArgsConstructor;
+import java.util.List;
+import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ActivityService {
-    private static final ActivityRepository activityRepository = new ActivityRepository();
+    private final ActivityRepository activityRepository;
 
-    public void addActivity(Activity activity) {
-        activityRepository.store(activity);
+    @Override
+    public Optional<UserEntity> getUserById(Long id) {
+        return this.userRepository.findById(id);
     }
 
-    public Activity getActivity(int id) {
-        return activityRepository.retrieve(id);
+    @Override
+    public List<UserEntity> getUsers() {
+        return (List<UserEntity>) this.userRepository.findAll();
     }
-    public ArrayList<Activity> getAllActivities() {
-        return activityRepository.getAllActivities();
+
+    @Override
+    public List<UserEntity> getUsersOrderedByEmail() {
+        return this.userRepository.findAllOrderedByEmail();
     }
 
 }
