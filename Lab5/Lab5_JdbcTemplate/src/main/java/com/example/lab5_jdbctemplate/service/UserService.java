@@ -34,6 +34,11 @@ public class UserService {
         return this.userDao.create(user);
     }
 
+    public Optional<User> getByEmail(String email) {
+        return this.userDao.getByEmail(email);
+    }
+
+
     public void update(Long id, UserDto userDto) throws InvalidUserIdException {
         if (this.userDao.getById(id).isEmpty()) {
             throw new InvalidUserIdException("Id is not valid, you can't update user.");
