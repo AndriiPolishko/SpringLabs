@@ -1,36 +1,15 @@
 package com.example.lab2.repositories;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import com.example.lab2.entities.Lesson;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LessonRepository implements ObjectRepository<Lesson> {
+public interface LessonRepository extends JpaRepository<Lesson, Long> {
 
-    private Map<Integer, Lesson> repository;
-
-    public LessonRepository() {
-        this.repository = new HashMap<>();
-    }
-
-    @Override
-    public void store(Lesson lesson) {
-        repository.put(lesson.getId(), lesson);
-    }
-
-    @Override
-    public Lesson retrieve(int id) {
-        return repository.get(id);
-    }
-
-
-    @Override
-    public Lesson delete(int id) {
-        Lesson lesson = repository.get(id);
-        this.repository.remove(id);
-        return lesson;
-    }
+    Page<Lesson> findAll(Pageable pageable);
 
 }

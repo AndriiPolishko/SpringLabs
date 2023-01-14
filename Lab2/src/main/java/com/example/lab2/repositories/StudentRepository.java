@@ -2,59 +2,20 @@ package com.example.lab2.repositories;
 
 import com.example.lab2.entities.Student;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.*;
 
 @Repository
-public class StudentRepository implements ObjectRepository<Student> {
+public interface  StudentRepository extends CrudRepository<Student, Long> {
 
-    private final Map<Integer, Student> repository;
+    List<Student> findByEmail(String email);
 
-    public StudentRepository() {
-        this.repository = new HashMap<>();
-    }
+    @Query("SELECT u FROM student u WHERE u.first_name=?1 AND u.second_name=?2")
+    List<Student> findByFirstNameAndSecondName(String firstName, String secondName);
 
-    @Override
-    public void store(Student student) {
-        repository.put(student.getId(), student);
-    }
-
-    @Override
-    public Student retrieve(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public Student delete(int id) {
-        Student e = repository.get(id);
-        repository.remove(id);
-        return e;
-    }
-
-    public void update(int id, Student newStudent) {
-        repository.replace(id, newStudent);
-    }
-
-    public Student findByEmail(String email) {
-        for (Student student: this.repository.values()) {
-            if (Objects.equals(student.getEmail(), email)) {
-                return student;
-            }
-        }
-        return null;
-    }
-
-    public List<Student> findAll(int id, int size) {
-        List<Student> res = new ArrayList<>();
-        int counter = 0;
-        for (Student student: this.repository.values()) {
-            if(student.getId() == id || (counter > 0 && counter <= size)) {
-                counter++;
-                res.add(student);
-            }
-        }
-        return res;
-    }
+    List<Student> findAllOrderedByEmail();
 
 
 }
